@@ -43,6 +43,10 @@ def apply_auto_theme(plot_type, palette_name=None, n_colors=6, font="Arial", fig
     elif plot_type == "ld_heatmap":
         sns.set_style("white")
         palette = sequential_palette(10, base_color="#2166ac")
+        plt.rcParams.update({
+            "axes.spines.top": False,
+            "axes.spines.right": False,
+        })
     elif plot_type == "qq":
         sns.set_style("white")
         palette = ["#7BC0CD"]

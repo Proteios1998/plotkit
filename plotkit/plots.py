@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from .auto import apply_auto_theme
 from scipy import stats
+import seaborn as sns
 
 def manhattan_plot(
     chrom,
@@ -123,6 +124,51 @@ def qq_plot(pval, ax=None, title="QQ Plot", show_lambda=True):
 
     ax.set_xlabel("Expected -log10(p)")
     ax.set_ylabel("Observed -log10(p)")
+    ax.set_title(title)
+
+    return ax
+
+def ld_heatmap(
+    ld_matrix,
+    ax=None,
+    cmap=None,
+    vmin=0,
+    vmax=1,
+    title="LD Heatmap",
+    show_colorbar=True
+):
+    """
+    Plot LD heatmap from an LD matrix (e.g., r^2).
+
+    Parameters
+    ----------
+    ld_matrix : 2D array
+        Linkage disequilibrium matrix (r or r^2)
+    """
+
+    ld_matrix = np.asarray(ld_matrix)
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(5, 5))
+
+    # Apply theme
+    palette = apply_auto_theme("ld_heatmap")
+
+    if cmap is None:
+        cmap = sns.color_palette(palette)
+
+    sns.heatmap(
+        ld_matrix,
+        ax=ax,
+        cmap=cmap,
+        vmin=vmin,
+        vmax=vmax,
+        square=True,
+        cbar=show_colorbar,
+        xticklabels=False,
+        yticklabels=False
+    )
+
     ax.set_title(title)
 
     return ax

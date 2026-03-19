@@ -17,9 +17,10 @@ def qualitative_palette(n=8):
     return generate_palette(n, saturation=0.7, lightness=0.6)
 
 
-def sequential_palette(n=6, base_color="#1f77b4"):
+def sequential_palette(n=6, base_color="#1f77b4", start_color="#ececec"):
     base = np.array(mcolors.to_rgb(base_color))
-    colors = [base * (0.3 + 0.7 * i / (n - 1)) for i in range(n)]
+    start = np.array(mcolors.to_rgb(start_color))
+    colors = [start + (base - start) * i / (n - 1) for i in range(n)]
     return [mcolors.to_hex(c) for c in colors]
 
 

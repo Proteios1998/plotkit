@@ -12,15 +12,24 @@ def apply_auto_theme(plot_type, palette_name=None, n_colors=6, font="Arial", fig
     """
     if plot_type == "scatter":
         sns.set_style("ticks")
-        palette = qualitative_palette(n_colors)
+        if n_colors < len(PALETTES["grgstyle"]):
+            palette = PALETTES["grgstyle"][:n_colors]
+        else:
+            palette = qualitative_palette(n_colors)
 
     elif plot_type == "line":
         sns.set_style("ticks")
-        palette = qualitative_palette(n_colors)
+        if n_colors < len(PALETTES["grgstyle"]):
+            palette = PALETTES["grgstyle"][:n_colors]
+        else:
+            palette = qualitative_palette(n_colors)
 
     elif plot_type == "bar":
         sns.set_style("whitegrid")
-        palette = qualitative_palette(n_colors)
+        if n_colors < len(PALETTES["grgstyle"]):
+            palette = PALETTES["grgstyle"][:n_colors]
+        else:
+            palette = qualitative_palette(n_colors)
 
     elif plot_type == "heatmap":
         sns.set_style("white")

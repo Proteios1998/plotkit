@@ -98,8 +98,6 @@ def set_theme_preset(name="paper"):
             "axes.spines.right": False,
         })
 
-import matplotlib.pyplot as plt
-
 def setup_multi_panel(
     nrows,
     ncols,
@@ -130,3 +128,39 @@ def setup_multi_panel(
     _apply_figure_fontsize(fig, font_scale)
 
     return fig, axes
+
+def _apply_figure_fontsize(fig, font_scale=1.0):
+    """
+    Scale fonts consistently across all subplots.
+    """
+
+    width, height = fig.get_size_inches()
+    base = (width * height) ** 0.5
+
+    scale = base / 5 * font_scale
+
+    plt.rcParams.update({
+        "axes.titlesize": 12 * scale,
+        "axes.labelsize": 10 * scale,
+        "xtick.labelsize": 9 * scale,
+        "ytick.labelsize": 9 * scale,
+        "legend.fontsize": 9 * scale,
+    })
+
+def add_panel_labels(fig, axes, labels=None, x=-0.1, y=1.05):
+    """
+    Add panel labels like A, B, C...
+    """
+
+    if labels is None:
+        labels = [chr(65 + i) for i in range(len(axes))]  # A, B, C...
+
+    for ax, label in zip(axes, labels):
+        ax.text(
+            x, y, label,
+            transform=ax.transAxes,
+            fontsize=plt.rcParams["axes.titlesize"],
+            fontweight="bold",
+            va="top"
+        )
+

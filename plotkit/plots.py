@@ -70,6 +70,7 @@ def manhattan_plot(
             -np.log10(pval[mask]),
             s=6,
             color=color,
+            alpha=0.6,
             rasterized=True
         )
 
@@ -99,6 +100,8 @@ def qq_plot(pval, ax=None, title="QQ Plot", show_lambda=True):
 
     n = len(pval)
 
+    palette = apply_auto_theme("qq")
+    
     if ax is None:
         fig, ax = plt.subplots(figsize=(5, 5))
 
@@ -106,7 +109,7 @@ def qq_plot(pval, ax=None, title="QQ Plot", show_lambda=True):
     expected = -np.log10(np.linspace(1/(n+1), 1, n))
     observed = -np.log10(pval)
 
-    ax.scatter(expected, observed, s=8)
+    ax.scatter(expected, observed, s=8, alpha=0.4)
 
     # Diagonal
     max_val = max(expected.max(), observed.max())

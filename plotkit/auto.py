@@ -29,23 +29,14 @@ def apply_auto_theme(plot_type, palette_name=None, n_colors=6, font="Arial", fig
     elif plot_type == "gwas":
         # Manhattan plot style
         sns.set_style("white")
-        palette = ["#4C72B0", "#DD8452"]  # alternating chromosomes
-
-        plt.rcParams.update({
-            "axes.spines.top": False,
-            "axes.spines.right": False,
-            "axes.edgecolor": "black",
-        })
+        palette = ["#757575", "#EFA130"]  # alternating chromosomes
 
     elif plot_type == "ld_heatmap":
         sns.set_style("white")
         palette = sequential_palette(10, base_color="#2166ac")
     elif plot_type == "qq":
         sns.set_style("white")
-        palette = ["#4C72B0"]
-    elif plot_type == "manhattan":
-        sns.set_style("white")
-        palette = ["#4C72B0", "#DD8452"]
+        palette = ["#7BC0CD"]
     else:
         sns.set_style("whitegrid")
         palette = qualitative_palette(n_colors)

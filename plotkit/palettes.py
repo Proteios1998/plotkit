@@ -66,6 +66,12 @@ PALETTES = {
     "seasunset" : [
         "#FC757B", "#F97F5F", "#FAA26F", "#FDCD94", 
         "#FEE199", "#B0D6A9", "#65BDBA"],
+    
+    # Light rainbow-style
+    "lightrainbow" : [
+        "#DB697A", "#EE8575", "#FBB482",
+        "#CDEBB8", "#9CD7BC", "#867BB9"],
+    
     # Nature-style (clean, not recommend)
     "nature": [
         "#3C5488", "#8491B4", "#4DBBD5", "#00A087",

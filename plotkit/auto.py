@@ -1,18 +1,17 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
-from .palettes import qualitative_palette, sequential_palette, diverging_palette
-
+from .palettes import qualitative_palette, sequential_palette, diverging_palette, PALETTES
+from .themes import set_font, auto_fontsize
 import seaborn as sns
 import matplotlib.pyplot as plt
 from .palettes import qualitative_palette, sequential_palette, diverging_palette
 
-def apply_auto_theme(plot_type, n_colors=6):
+def apply_auto_theme(plot_type, palette_name=None, n_colors=6, font="Arial", figsize=(6,4)):
     """
     Automatically select theme + palette based on plot type.
     """
-
     if plot_type == "scatter":
-        sns.set_style("whitegrid")
+        sns.set_style("ticks")
         palette = qualitative_palette(n_colors)
 
     elif plot_type == "line":
@@ -51,6 +50,14 @@ def apply_auto_theme(plot_type, n_colors=6):
         sns.set_style("whitegrid")
         palette = qualitative_palette(n_colors)
 
+    plt.rcParams["figure.figsize"] = figsize
+    # create a dummy fig to scale fonts
+    fig = plt.figure(figsize=figsize)
+    auto_fontsize(fig)
+    plt.close(fig)
+    
     sns.set_palette(palette)
+    set_font(font)
+    print(plt.rcParams["font.sans-serif"])
     return palette
 

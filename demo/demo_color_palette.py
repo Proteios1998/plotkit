@@ -14,6 +14,6 @@ set_theme("light")
 import matplotlib.pyplot as plt
 
 plt.bar(range(6), range(6), color=palette)
-plot.show()
+plt.show()
 plt.savefig("color_palette.png")
 plt.close()

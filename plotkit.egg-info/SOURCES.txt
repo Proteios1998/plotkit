@@ -1,6 +1,7 @@
 LICENSE
 README.md
 pyproject.toml
+plotkit/__init__.py
 plotkit/auto.py
 plotkit/palettes.py
 plotkit/plots.py
@@ -12,5 +13,7 @@ plotkit.egg-info/SOURCES.txt
 plotkit.egg-info/dependency_links.txt
 plotkit.egg-info/requires.txt
 plotkit.egg-info/top_level.txt
+test/demo_color_palette.py
 test/demo_plot.py
+test/demo_plot_palette.py
 test/demo_theme.py

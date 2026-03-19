@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+plotkit/auto.py
+plotkit/palettes.py
+plotkit/plots.py
+plotkit/preview.py
+plotkit/themes.py
+plotkit/utils.py
+plotkit.egg-info/PKG-INFO
+plotkit.egg-info/SOURCES.txt
+plotkit.egg-info/dependency_links.txt
+plotkit.egg-info/requires.txt
+plotkit.egg-info/top_level.txt
+test/demo_plot.py
+test/demo_theme.py

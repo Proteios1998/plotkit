@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: plotkit
+Version: 0.1.0
+Summary: Lightweight plotting toolkit with automatic theme selection
+Author-email: Your Name <your@email.com>
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: numpy
+Dynamic: license-file

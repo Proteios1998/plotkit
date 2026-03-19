@@ -58,6 +58,5 @@ def apply_auto_theme(plot_type, palette_name=None, n_colors=6, font="Arial", fig
     
     sns.set_palette(palette)
     set_font(font)
-    print(plt.rcParams["font.sans-serif"])
     return palette
 

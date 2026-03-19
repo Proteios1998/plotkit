@@ -42,7 +42,6 @@ def set_font(font_family="Nimbus Sans"):
     # important for PDF/illustrator compatibility
     plt.rcParams["pdf.fonttype"] = 42
     plt.rcParams["ps.fonttype"] = 42
-    print(plt.rcParams["font.sans-serif"])
 
 def auto_fontsize(fig=None, base=10):
     """

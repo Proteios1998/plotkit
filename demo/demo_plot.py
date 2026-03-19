@@ -6,7 +6,6 @@ from plotkit.palettes import PALETTES
 # Automatically configure everything
 palette = apply_auto_theme("scatter", n_colors=1, font="Nimbus Sans")
 print(palette)
-print(plt.rcParams["font.sans-serif"])
 
 x = np.random.randn(100)
 y = np.random.randn(100)
@@ -17,4 +16,3 @@ plt.ylabel("Y")
 plt.title("Auto-themed Scatter Plot")
 plt.savefig("test_scatter.png", dpi=300)
 plt.close()
-print(plt.rcParams["font.sans-serif"])

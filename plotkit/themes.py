@@ -147,7 +147,7 @@ def _apply_figure_fontsize(fig, font_scale=1.0):
         "legend.fontsize": 9 * scale,
     })
 
-def add_panel_labels(fig, axes, labels=None, x=-0.1, y=1.05):
+def add_panel_labels(fig, axes, labels=None, x=-0.08, y=1.05):
     """
     Add panel labels like A, B, C...
     """

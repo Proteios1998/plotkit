@@ -1,6 +1,12 @@
 LICENSE
 README.md
 pyproject.toml
+demo/demo_ld_heatmap.py
+demo/demo_multi_panel.py
+demo/demo_palette_bar.py
+demo/demo_plot.py
+demo/demo_plot_palette.py
+demo/demo_theme.py
 plotkit/__init__.py
 plotkit/auto.py
 plotkit/palettes.py
@@ -13,7 +19,3 @@ plotkit.egg-info/SOURCES.txt
 plotkit.egg-info/dependency_links.txt
 plotkit.egg-info/requires.txt
 plotkit.egg-info/top_level.txt
-test/demo_color_palette.py
-test/demo_plot.py
-test/demo_plot_palette.py
-test/demo_theme.py

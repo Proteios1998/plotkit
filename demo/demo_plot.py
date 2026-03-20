@@ -6,7 +6,6 @@ from plotkit.palettes import PALETTES
 
 # Automatically configure everything
 palette = apply_auto_theme("scatter", n_colors=1, font="Nimbus Sans")
-print(palette)
 
 x = np.random.randn(100)
 y = np.random.randn(100)
@@ -26,9 +25,9 @@ pval = np.random.uniform(0, 1, n)
 
 # Apply GWAS theme
 apply_auto_theme("gwas")
-
+grey_palette = ["#999999", "#333333"]
 # Manhattan
-ax = manhattan_plot(chrom, pos, pval)
+ax = manhattan_plot(chrom, pos, pval, palette=grey_palette)
 ax.figure.savefig("manhattan_demo.png", dpi=300)
 
 # QQ

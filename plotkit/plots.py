@@ -10,8 +10,9 @@ def manhattan_plot(
     pos,
     pval,
     ax=None,
-    genomewide_line=5e-8,
-    suggestive_line=1e-5,
+    palette=None,
+    genomewide_line=None, #5e-8,
+    suggestive_line=None, #1e-5,
     title="Manhattan Plot"
 ):
     """
@@ -34,7 +35,8 @@ def manhattan_plot(
     if ax is None:
         fig, ax = plt.subplots(figsize=(10, 5))
 
-    palette = apply_auto_theme("gwas")
+    if palette is None:
+        palette = apply_auto_theme("gwas")
 
     # Sort by chromosome and position
     order = np.lexsort((pos, chrom))
@@ -76,9 +78,9 @@ def manhattan_plot(
         )
 
     # Significance lines
-    if genomewide_line:
+    if genomewide_line is not None:
         ax.axhline(-np.log10(genomewide_line), linestyle="--")
-    if suggestive_line:
+    if suggestive_line is not None:
         ax.axhline(-np.log10(suggestive_line), linestyle=":")
 
     ax.set_xticks(xticks)
@@ -90,7 +92,7 @@ def manhattan_plot(
     return ax
 
 
-def qq_plot(pval, ax=None, title="QQ Plot", show_lambda=True):
+def qq_plot(pval, ax=None, palette=None, title="QQ Plot", show_lambda=True):
     """
     Generate a QQ plot for GWAS p-values.
     """
@@ -101,7 +103,8 @@ def qq_plot(pval, ax=None, title="QQ Plot", show_lambda=True):
 
     n = len(pval)
 
-    palette = apply_auto_theme("qq")
+    if palette is None:
+        palette = apply_auto_theme("qq")
     
     if ax is None:
         fig, ax = plt.subplots(figsize=(5, 5))
@@ -134,6 +137,7 @@ def ld_heatmap(
     cmap=None,
     vmin=0,
     vmax=1,
+    palette=None,
     title="LD Heatmap",
     show_colorbar=True
 ):
@@ -152,7 +156,8 @@ def ld_heatmap(
         fig, ax = plt.subplots(figsize=(5, 5))
 
     # Apply theme
-    palette = apply_auto_theme("ld_heatmap")
+    if palette is None:
+        palette = apply_auto_theme("ld_heatmap")
 
     if cmap is None:
         cmap = sns.color_palette(palette)

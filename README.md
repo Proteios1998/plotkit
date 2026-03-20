@@ -33,7 +33,9 @@ pip install -e .
 ## Quick Start
 ### Check the color palettes
 ```
-from plotkit.palettes import palette_showcase_figure, PALETTES
+from plotkit.palettes import PALETTES
+from plotkit.preview import palette_showcase_figure
+
 palette = PALETTES["grgstyle"]
 palette_showcase_figure(palette)
 ```

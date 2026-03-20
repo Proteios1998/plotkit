@@ -140,20 +140,20 @@ def _apply_figure_fontsize(fig, font_scale=1.0):
     scale = base / 5 * font_scale
 
     plt.rcParams.update({
-        "axes.titlesize": 12 * scale,
+        "axes.titlesize": 11 * scale,
         "axes.labelsize": 10 * scale,
         "xtick.labelsize": 9 * scale,
         "ytick.labelsize": 9 * scale,
         "legend.fontsize": 9 * scale,
     })
 
-def add_panel_labels(fig, axes, labels=None, x=-0.08, y=1.05):
+def add_panel_labels(fig, axes, labels=None, x=-0.08, y=1.08):
     """
-    Add panel labels like A, B, C...
+    Add panel labels like a, b, c...
     """
 
     if labels is None:
-        labels = [chr(65 + i) for i in range(len(axes))]  # A, B, C...
+        labels = [chr(97 + i) for i in range(len(axes))]  # a, b, c...
 
     for ax, label in zip(axes, labels):
         ax.text(

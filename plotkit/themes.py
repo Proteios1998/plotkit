@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 def set_theme(theme="minimal", grid=False, font_scale=1.2):
     if theme == "light":
@@ -104,7 +105,9 @@ def setup_multi_panel(
     figsize=(8, 6),
     font_scale=1.0,
     sharex=False,
-    sharey=False
+    sharey=False,
+    hspace=None,
+    wspace=None
 ):
     """
     Create a multi-panel figure with consistent styling.
@@ -125,19 +128,56 @@ def setup_multi_panel(
         axes = [axes]
 
     # Apply global font scaling
-    _apply_figure_fontsize(fig, font_scale)
+    _apply_figure_fontsize(fig, 
+                           nrows=nrows,
+                           ncols=ncols,
+                           font_scale=font_scale)
+    if hspace is None:
+        hspace = 0.35 / np.sqrt(nrows)
 
+    if wspace is None:
+        wspace = 0.25 / np.sqrt(ncols)
+
+    fig.subplots_adjust(
+        hspace=hspace,
+        wspace=wspace
+    )
+    
     return fig, axes
 
-def _apply_figure_fontsize(fig, font_scale=1.0):
+def _apply_figure_fontsize(fig, nrows=1, ncols=1, font_scale=1.0):
     """
     Scale fonts consistently across all subplots.
     """
 
     width, height = fig.get_size_inches()
-    base = (width * height) ** 0.5
+    
+    # --------------------------------------------------
+    # Base scale from figure area
+    # --------------------------------------------------
 
-    scale = base / 5 * font_scale
+    fig_scale = np.sqrt(width * height) / 5.0
+
+    # --------------------------------------------------
+    # Penalize many rows more strongly
+    # --------------------------------------------------
+
+    row_penalty = 1 / (nrows ** 0.35)
+
+    # Columns matter less visually
+    col_penalty = 1 / (ncols ** 0.15)
+
+    scale = (
+        fig_scale
+        * row_penalty
+        * col_penalty
+        * font_scale
+    )
+
+    # --------------------------------------------------
+    # Clamp scale to reasonable range
+    # --------------------------------------------------
+    scale = np.clip(scale, 0.65, 1.8)
 
     plt.rcParams.update({
         "axes.titlesize": 11 * scale,
